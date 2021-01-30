@@ -1,0 +1,170 @@
+---
+title: "Mi primer markdown"
+author: "Juvenal Campos"
+date: "1/28/2021"
+output: html_document
+---
+
+<!-- ESTILOS -->
+<!-- En esta sección se incluyen los estilos default que van a regir el estilo de todo el documento. Se introduce con los tags de HTML de <style> ... </style> -->
+
+<style>
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Hind+Guntur:wght@300&display=swap');
+
+  h1,h2,h3,h4,h5,h6 {
+    color:red;
+    text-align:center;
+  }
+
+  p {
+    color:gray;
+    text-align:justify;
+    font-size: 16px;
+    font-family: 'Hind Guntur', sans-serif;
+  }
+
+</style>
+
+<!-- Este chunk es de opciones default -->
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<!-- COMENTARIO -->
+<!-- Este es un comentario dentro de RMarkdown -->
+<!-- En caso de que quieras poner notitas para alguien que revise tu archivo -->
+
+
+<div style = "background-color:#ffebcc;">
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+```{r cars, eval = FALSE}
+summary(cars)
+print(a)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+<p style = 'text-align:center;'>
+```{r pressure, echo=FALSE, fig.height=10}
+plot(pressure)
+```
+</p>
+
+
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+</div>
+
+----
+
+# Titulo 1 
+
+<h1 style = 'color:pink; text-align:center;'>Titulo 1</h1>
+
+## Titulo 2
+
+###### Titulo 6 (soy un subsubtitulo)
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+**Este es texto en negritas**
+
+*Este es texto en cursivas*
+
+_Este es texto en cursivas_
+
+## Texto en forma de código: 
+
+La librería `tidyverse` es mi libreria favorita. 
+
+EL parametro `echo = TRUE` permite que ...
+
+## Listas
+
+**Lista no agrupada**
+
+* Elemento A
+
+* Elemento B
+
+  * Elemento C
+
+
+**_Lista ordenada_**
+
+1. Elemento 1
+
+2. Elemento 2
+
+3. Elemento 3
+
+**Meter un enlace dentro de nuestro RMarkdown**
+
+### Enlaces markdown 
+
+Este es un [enlace a mi página](https://rpubs.com/Juve_Campos/rmarkdown).
+
+### Enlaces que abren pestaña nueva
+
+Este es un <a target = '_blank' href = 'https://rpubs.com/Juve_Campos/rmarkdown'>enlace a mi página, que abre una pestaña nueva</a>.
+
+> "Hoy pagan, y eso me hace feliz"
+
+-- Frase vista en clase 
+
+
+# Introducir código: 
+
+Cuando queremos introducir código (ya sea de R o de otro lenguaje) lo introducimos entre 3 backticks como se ve a continuación: 
+
+```
+        #  Código de R
+        library(tidyverse)
+        a = b + c
+```
+
+Esto es **solo para mostrar código. NO lo ejecuta.**
+
+Si queremos mostrar código, y que este se ejecute, tenemos que escribir algo como lo siguiente:
+
+En este codigo yo generé un objeto llamado `a`:
+
+```{r cache=FALSE, message=FALSE, warning=FALSE}
+# Librerias
+library(tidyverse)
+library(ggplot2)
+a <- c(1,2,3,4,5)
+a
+```
+
+Y lo que hace por dentro es ejecutar el código mostrado.
+
+**Opciones de chunk que hay que tener en cuenta: **
+
+* `cache=FALSE, message=FALSE, warning=FALSE`, sirven para que los comandos que mandan mensajes no los impriman en pantalla. Esto es importante si queremos que nuestros lectores no sepan lo que está corriendo por detrás.
+
+* `eval = FALSE`, sirve para que los códigos se muestren, pero que no se ejecuten. Esto es útil cuando escribimos tutoriales de R pero no queremos que se ejecute lo que hay dentro.
+
+* `echo = FALSE`, sirve para que los códigos **se ejecuten** pero no se muestren. Esto es útil cuando estamos escribiendo un artículo y queremos que nuestro código se ejecute (por ejemplo, para crear una gráfica o un mapa) pero no queremos que los lectores vean las tripas, o el código que lo genera.
+
+* Opciones de figuras: para ver qué opciones sobre las figuras se pueden utilizar, podemos revisar el siguiente documento: https://sebastiansauer.github.io/figure_sizing_knitr/ . Algunas de las más comunes son las de `out.width` y `out.height` para el tamaño de salida de una imagen generada por el propio código, como puede ser el caso de gráficas de `ggplot()`o mapas de `leaflet`.
+
+
+
+
