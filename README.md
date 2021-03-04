@@ -14,4 +14,8 @@ La carpeta contiene el ejercicio hecho en clase, tanto en su versión no resuelt
 
 En esta sesión vimos como crear un mapa estático (para impresión) a partir de la librería de visualización `ggplot2`, repasando desde la apertura de datos geográficos (con la librería `sf`), la unión de tablas (con `merge()` y `*_join()`) hasta la creación de mapas, la edición del tema y la impresión en un archivo `*.png`. El código de este repositorio igualmente incluye la impresión en loop de varios mapas a la vez. 
 
+## Sesión 05 - Mapas interactivos en `leaflet`
+
+En esta sesión vimos como generar un mapa interactivo a partir de puntos, líneas y polígonos, incorporando arrastre, zoom y creación de tooltips y labels.
+
 
