@@ -18,4 +18,6 @@ En esta sesión vimos como crear un mapa estático (para impresión) a partir de
 
 En esta sesión vimos como generar un mapa interactivo a partir de puntos, líneas y polígonos, incorporando arrastre, zoom y creación de tooltips y labels.
 
+## Sesión 06 - Visualización interactiva. 
 
+En esta sesión se revisó la forma de crear visualizaciones interactivas utilizando las librerías `plotly`, `highcharter` y `wordcloud2`. Igualmente, se aprovechó para realizar un repaso de `ggplot2`.
