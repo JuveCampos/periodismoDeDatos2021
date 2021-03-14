@@ -12,7 +12,7 @@ library(plotly)
 # Si quieres hacerle como en el video, descarga el archivo para tenerlo localmente
 # Desde este enlace: https://github.com/JuveCampos/periodismoDeDatos2021/raw/main/Sesión%2004%20-%20Mapas%20en%20Ggplot/Ejercicio%20práctico%20Clase%2004%20-%20Mapas/01_Datos/mpios.geojson
 # Y guardalo en tu carpeta 01_Datos
-mpios <- st_read("https://raw.githubusercontent.com/JuveCampos/periodismoDeDatos2021/main/Sesión%2004%20-%20Mapas%20en%20Ggplot/Ejercicio%20práctico%20Clase%2004%20-%20Mapas/01_Datos/mpios.geojson") %>% 
+mpios <- st_read("01_Datos/mpios.geojson") %>% 
   select(-c(COV_, COV_ID))
 
 # Los objetos tipo "sf" son los que almacenan las geometrías

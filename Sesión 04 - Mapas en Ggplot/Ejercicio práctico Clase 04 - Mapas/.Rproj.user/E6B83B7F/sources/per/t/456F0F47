@@ -1,0 +1,33 @@
+{
+    "id": "456F0F47",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1599143459160.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "cacheKey": "36845752",
+        "caption": "mpios",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=mpios&cache_key=36845752",
+        "displayedObservations": "2465",
+        "environment": "",
+        "expression": "mpios",
+        "object": "mpios",
+        "preview": "0",
+        "totalObservations": "2465",
+        "variables": "10",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 0,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1599143459160,
+    "read_only": false,
+    "read_only_alternatives": []
+}

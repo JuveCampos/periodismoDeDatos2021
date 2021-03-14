@@ -1,0 +1,33 @@
+{
+    "id": "4E7D8590",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1599143757226.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "cacheKey": "C072CE26",
+        "caption": "mapa",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=mapa&cache_key=C072CE26",
+        "displayedObservations": 33,
+        "environment": "",
+        "expression": "mapa",
+        "object": "mapa",
+        "preview": 0,
+        "totalObservations": 33,
+        "variables": 19,
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 8746391181558637602,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1599143757226,
+    "read_only": false,
+    "read_only_alternatives": []
+}

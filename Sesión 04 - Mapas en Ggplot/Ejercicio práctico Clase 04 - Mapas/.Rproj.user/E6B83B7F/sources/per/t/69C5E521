@@ -1,0 +1,33 @@
+{
+    "id": "69C5E521",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1599143464527.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "cacheKey": "73CCE430",
+        "caption": "idh",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=idh&cache_key=73CCE430",
+        "displayedObservations": "4940",
+        "environment": "",
+        "expression": "idh",
+        "object": "idh",
+        "preview": "0",
+        "totalObservations": "4940",
+        "variables": "10",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 0,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1599143464527,
+    "read_only": false,
+    "read_only_alternatives": []
+}
