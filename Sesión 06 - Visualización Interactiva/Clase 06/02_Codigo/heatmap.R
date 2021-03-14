@@ -1,12 +1,14 @@
 # Heatmaps en R ----
 library(tidyverse)
 library(plotly)
+library(htmlwidgets)
 
 coches = readxl::read_xlsx("01_Datos/coches.xlsx") %>% 
   mutate(text = str_c("<b>Entidad:</b> ", ent, "<br>", 
                       "<b>Año: </b>", year, "<br>", 
                       "<b>Valor: </b>", prettyNum(round(valor, 2), big.mark = ",")
                       ))
+
 
 # Version 1
 plt_1 <- coches %>% 
@@ -64,3 +66,8 @@ plot
 # Convertimos a interactivo
 plotly::ggplotly(plot, tooltip = "text")
 
+# Guardamos en un objeto 
+objeto = plotly::ggplotly(plot, tooltip = "text")
+
+# Guardamos en HTML
+saveWidget(objeto, "heatmap.html")

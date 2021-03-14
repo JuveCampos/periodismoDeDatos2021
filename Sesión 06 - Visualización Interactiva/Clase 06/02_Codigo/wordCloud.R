@@ -44,8 +44,11 @@ create_wordcloud <- function(data,
     return(NULL)
   }
   
-  wordcloud2(data, backgroundColor = background, figPath = mask,  color = "random-light", size = tamanio) 
+  wordcloud2(data, backgroundColor = background, figPath = mask,  color = "random-dark", size = tamanio) 
 }
 
 # Creamos una wordCloud
-create_wordcloud(bd$text, stop_words = c("hola"), num_words = 200)
+wcld = create_wordcloud(bd$text, stop_words = c("hola"), num_words = 200)
+class(wcld)
+
+

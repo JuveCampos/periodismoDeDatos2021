@@ -1,5 +1,7 @@
 # Treemap 
 # En caso de que no se tenga d3treeR
+# install.packages("tidyverse")
+# Lo instalamos por fuera: 
 # devtools::install_github("timelyportfolio/d3treeR")
 library(treemapify)
 library(tidyverse)
@@ -14,7 +16,10 @@ G20
 # Treemap con ggplot
 ggplot(G20, aes(area = gdp_mil_usd, 
                 fill = region, 
-                label = str_c(country, "\n", "$", prettyNum(gdp_mil_usd, big.mark = ",")))) +
+                # Aca generamos la etiqueta dentro de cada rectangulo
+                label = str_c(country, "\n",
+                              "$",
+                              prettyNum(gdp_mil_usd, big.mark = ",")))) +
   geom_treemap() + 
   geom_treemap_text(colour = "white", 
                     place = "center", 
@@ -33,15 +38,20 @@ ggplot(G20, aes(area = gdp_mil_usd,
         plot.title = element_text(hjust = 0.5, face = "bold")) 
 
 
+# Otros tutoriales a checar
 # VER: https://rstudio-pubs-static.s3.amazonaws.com/320413_6ab300527e8548b1a3cbd0d4c6200fcc.html
 # VER: https://www.datacamp.com/community/tutorials/data-visualization-highcharter-r
 
+# Creamos una columna nueva para el texto que va a ir dentro. 
 G20 = G20 %>% 
   mutate(country_2 = str_c(country, ":  $", prettyNum(gdp_mil_usd, big.mark = ",")))
 
+# Generamos el treemap nuevo, pero con otra librería
 `PIB en Millones de Dólares` <- treemap(G20, index = c("region", "country_2"), 
                                         vSize = "gdp_mil_usd", vColor = "region")
 
-# Interactivo
-d3tree3(`PIB en Millones de Dólares`, celltext = "name")
+# Lo hacemos interactivo
+g = d3tree3(`PIB en Millones de Dólares`, celltext = "name")
+class(g) # Vemos si se puede imprimir
+saveWidget(g, "redes.html") # Guardamos el HTML
 
