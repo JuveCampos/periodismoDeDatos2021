@@ -21,3 +21,11 @@ En esta sesión vimos como generar un mapa interactivo a partir de puntos, líne
 ## Sesión 06 - Visualización interactiva. 
 
 En esta sesión se revisó la forma de crear visualizaciones interactivas utilizando las librerías `plotly`, `highcharter` y `wordcloud2`. Igualmente, se aprovechó para realizar un repaso de `ggplot2`.
+
+## Sesión 07 - Descarga automatizada de datos abiertos. 
+
+En esta sesión se hace el ejercicio de descargar múltiples archivos a través de loops `for` automatizados. Se realizaron 5 ejemplos durante la clase; descarga de datos de producción agrícola, descarga de datos de datos de Tabulados de Vivienda del CENSO 2020 de INEGI, descarga de datos de variables meteorológicas de la CDMX, descarga de cartografía electoral del INE y descarga de datos más recientes del COVID. 
+
+
+
+
