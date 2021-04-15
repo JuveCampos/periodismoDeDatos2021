@@ -26,6 +26,11 @@ En esta sesión se revisó la forma de crear visualizaciones interactivas utiliz
 
 En esta sesión se hace el ejercicio de descargar múltiples archivos a través de loops `for` automatizados. Se realizaron 5 ejemplos durante la clase; descarga de datos de producción agrícola, descarga de datos de datos de Tabulados de Vivienda del CENSO 2020 de INEGI, descarga de datos de variables meteorológicas de la CDMX, descarga de cartografía electoral del INE y descarga de datos más recientes del COVID. 
 
+## Sesión 08 y Sesión 09 - Descarga de datos a través de APIs.
 
+En esta sesión repasamos la descarga de APIs a través del ejemplo de uso de 4 apis distintas: el [API de Pokemon](https://pokeapi.co) y el [API de Ecobici](https://www.ecobici.cdmx.gob.mx/es/informacion-del-servicio/open-data) (RESTFUL APIs) y los clientes del API de Twitter {`rtweet`} y de Spotify {`spotifyr`}. 
 
+## Sesión 10 - Introducción al Web Scraping. 
+
+En esta sesión se introdujo el concepto de Web Scraping, las consideraciones legales y éticas y también se practicó con 3 ejemplos los fundamentos del proceso.  
 
