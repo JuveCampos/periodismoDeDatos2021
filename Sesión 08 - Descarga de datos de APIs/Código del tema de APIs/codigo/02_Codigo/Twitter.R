@@ -78,12 +78,19 @@ openxlsx::write.xlsx(bd, "tweetsSismo.xlsx")
 # Stream de Tweets; muestra estadística de Tweets en tiempo real. 
 ?stream_tweets
 # # Stream de tweets (para CDMX)
-stream_tweets <- stream_tweets(c(-99.39, 
+stream_tweets_cdmx <- stream_tweets(c(-99.39, 
                                  19.04,
                                  -98.84,
                                  19.58), 
                                timeout = 30 # Segundos
                                )
+
+stream_tweets_mex <- stream_tweets(c(-116.317590, 
+                                 14.876505,
+                                 -86.847877,
+                                 32.759644), 
+                               timeout = 30 # Segundos
+)
 
 # # Stream de tweets (para Todo Estados Unidos)
 usa <- stream_tweets(

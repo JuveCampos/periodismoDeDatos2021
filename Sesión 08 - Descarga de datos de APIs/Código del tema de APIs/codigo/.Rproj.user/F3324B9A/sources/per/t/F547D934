@@ -1,9 +1,9 @@
 {
     "id": "F547D934",
-    "path": "~/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Vis2020/CLASE DE VERANO 2021/Sesión 08 - APIs/codigo/02_Codigo/spotify R.R",
+    "path": "~/Documents/GitHub/periodismoDeDatos2021/Sesión 08 - Descarga de datos de APIs/Código del tema de APIs/codigo/02_Codigo/spotify R.R",
     "project_path": "02_Codigo/spotify R.R",
     "type": "r_source",
-    "hash": "2676026345",
+    "hash": "3953056932",
     "contents": "",
     "dirty": false,
     "created": 1616702315270.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "70,0",
+        "cursorPosition": "6,17",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1616698981,
+    "lastKnownWriteTime": 1617857996,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1616698981,
+    "last_content_update": 1617857996938,
     "read_only": false,
     "read_only_alternatives": []
 }

@@ -1,6 +1,6 @@
 {
     "id": "3CC0BC09",
-    "path": "~/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Vis2020/CLASE DE VERANO 2021/Sesión 08 - APIs/codigo/02_Codigo/ecobici_clase.R",
+    "path": "~/Documents/GitHub/periodismoDeDatos2021/Sesión 08 - Descarga de datos de APIs/Código del tema de APIs/codigo/02_Codigo/ecobici_clase.R",
     "project_path": "02_Codigo/ecobici_clase.R",
     "type": "r_source",
     "hash": "2550665393",
@@ -11,7 +11,9 @@
     "relative_order": 2,
     "properties": {
         "source_window_id": "",
-        "Source": "Source"
+        "Source": "Source",
+        "cursorPosition": "14,16",
+        "scrollLine": "0"
     },
     "folds": "",
     "lastKnownWriteTime": 1616702223,
