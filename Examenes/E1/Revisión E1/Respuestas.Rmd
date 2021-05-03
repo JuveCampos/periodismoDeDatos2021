@@ -1,0 +1,277 @@
+---
+title: "Examen 01 Periodismo de Datos"
+output: html_document
+---
+
+## Tema a evaluar: Visualización de datos 
+
+El presente examen está dividido en dos secciones; la sección teórica y la sección práctica.
+
+* **Entrega: ** La entrega del examen consistirá de una liga o enlace a un documento de RPubs que contenga todas las respuestas del exámen. El enlace deberá ser enviado a mi correo, con copia a Sebastián Garrido y a Helga Jáuregui. 
+
+
+## Sección teórica.
+
+Responda las siguientes preguntas: 
+
+1. ¿Cuáles son los principales tipos de geometrías que se pueden representar en un mapa? 
+
+**R: **
+
+*Puntos, lineas y polígonos, así como matríces raster*
+
+2. Explique, en sus propias palabras, ¿qué pasos hay que seguir para elaborar un mapa en R, tanto para el caso interactivo como estático? ¿Qué pasos tienen en común y en cuales son diferentes?
+
+**R: **
+
+Pasos:
+
+1) Ubicar el archivo de atributos y de geometrías
+
+2) Juntarlos, en caso de que no esten juntos, utilizando merge() o left_join()
+
+3) Generar la paleta de colores, las etiquetas y los popups
+
+4) Generar el mapa. Si lo voy a hacer en ggplot, uso geom_sf() y trabajo como cualquier gráfica de ggplot; si voy a usar leaflet, uso la librería leaflet.
+
+3. ¿Qué hace la función `sf::st_crs()`? ¿Cuál es el `crs` recomendado en clase para trabajar?
+
+**R: ** 
+
+*Checa el sistema de coordenadas de referencia de nuestro objeto sf (las geometrías del mapa). El crs recomendado es el 4326.*
+
+4. ¿Para qué sirve la función `merge()` y la función `left_join()`? Responda la pregunta utilizando el término “ _variable llave_”. (Recuerde que ambas funciones tienen un papel muy similar, por lo que basta con que explique como funciona una de las dos).
+
+**R: **
+
+*Para juntar dos tablas de datos a partir de una (o más) variables comunes, las cuales conoceremos como variable llave.*
+
+5. ¿En qué caso (o casos) recomendaría usted utilizar visualización interactiva y en qué caso (o casos) recomendaría utilizar visualización estática? ¿Considera que una es mejor que otra? 
+
+**R: **
+*Si va para twitter o impresión física en papel: estática. Si va para página web y queremos que el usuario la explore; interactiva. Cada una es mejor que la otra dependiendo los datos, el medio en el que se presentan y que tan bien diseñada se encuentre.*
+
+6. Supongamos los siguientes casos, y describa... ¿Qué tipo de gráfico (mapa, líneas, puntos, barras u otro) utilizaría en cada caso? 
+
+a) Suponga que un huracán devastó alguna entidad del norte de México, y que **usted quiere mostrar al público la ubicación de los principales centros de acopio de vivieres dentro de la ciudad.** 
+
+**R: **
+
+*Mapa interactivo de puntos*
+
+b) Suponga que usted quiere **comparar la tasa de incidencia delictiva por cada 10,000 habitantes a nivel estatal**.
+
+**R: **
+
+*Gráfico de barras, si solo tengo un año; de líneas si quiero mostrar evolución*
+
+
+c) Suponga que quiere **mostrar la evolución del precio de la acción de FEMSA, y ver si tuvo algún efecto el nuevo etiqutado sobre el precio de la acción.**
+
+<!-- geom_vline(xintercept = "01-01-2020") -->
+<!-- geom_rect() -->
+
+**R: **
+
+*Gráfica de líneas, con una linea que muestra la entrada en vigor del nuevo etiquetado.*
+
+## Sección práctica. 
+
+En esta sección, resuelva y responda las preguntas de cada uno de los ejercicios. 
+
+**Reglas:**
+
+* Justifíque cada una de las librerías que utilice en el exámen. Una librería que se encuentre sin usar, o que no tenga nada que ver (por ejemplo, librerías de `machine learning`), será penalizada en la calificación final.
+
+* Librerias sugeridas a utilizar: `tidyverse`, `sf`, `leaflet`, `scales`, `viridis`, `RColorBrewer`, `readxl` etc.
+
+```{r echo = FALSE, cache=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(sf)
+library(leaflet)
+library(readxl)
+library(plotly)
+```
+
+* Trate de que la información que incluya en cada gráfica ayude a que el lector entienda de manera adecuada la información. Incluya títulos, subtítulos y _captions_ o pies de página que describan tanto la gráfica como los datos. 
+
+* Las partes opcionales son opcionales, y no le perjudicarán si decide no hacerlas. Si decide hacerlas, pueden darle puntos extra en la nota final. 
+
+### Ejercicio 01. 
+
+**Casas en Los Ángeles**
+
+La base de datos `"Datos_Examen/ejercicio_01/houses.xlsx"` contiene información sobre los precios de distintas casas en venta ubicadas en el condado de Los Ángeles. A partir de esos datos, elabore lo siguiente:
+
+a) Una gráfica de puntos en `ggplot`, en la cual la posición en el eje `x` esté dado por el área de la casa (`sqft`), la posición `y` esté dada por el precio (`price`) y el `color` esté dado por la Ciudad (`city`) de Los Ángeles donde se encuentre la casa. Cada punto deberá ser un dato de una casa.
+
+```{r echo = FALSE}
+d1 = readxl::read_xlsx("Datos_Examen/ejercicio_01/houses.xlsx")
+
+# Gráfica Básica ----
+d1 %>% 
+  ggplot(aes(x = sqft, y = price, color = city)) + 
+  geom_point() + 
+  # Extras
+  labs(title = "Precio y área de las casas en Los Ángeles", 
+       x = "Área, en sqft", 
+       y = "Precio, en Dólares", 
+       color = "Ciudad") + 
+  scale_y_continuous(labels = scales::dollar_format())
+
+```
+
+b) Transforme, utilizando la librería `plotly`, la gráfica de `a)` en una gráfica interactiva. **Opcional** modifique el `tooltip` (la ventanita que sale cuando colocamos el cursor en cada punto) para que muestre datos en un formato más agradable.
+
+```{r echo = FALSE}
+# Gráfica Básica ----
+plt = d1 %>% 
+  ggplot(aes(x = sqft, y = price, color = city)) + 
+  geom_point() + 
+  # Extras
+  labs(title = "Precio y área de las casas en Los Ángeles", 
+       x = "Área, en sqft", 
+       y = "Precio, en Dólares", 
+       color = "Ciudad") + 
+  scale_y_continuous(labels = scales::dollar_format())
+
+ggplotly(plt)
+
+```
+
+c) Responda: _¿Cuanto mide y cuesta la casa más cara?_
+
+<!-- **R: ** Cuesta $89'950,000 dólares y mide 28,000 pies cuadrados.  -->
+
+### Ejercicio 02. 
+
+**Preferencias electorales Nuevo León**
+
+El día 5 de Abril del 2021, el periódico **"Del Norte"** publicó el cambio de preferencias electorales de marzo a abril del presente mes ([ver](https://twitter.com/SoyOtroLuis/status/1379062889336741896)). 
+
+A partir de los datos de `"Datos_Examen/ejercicio_02/preferenciasElectoralesNuevoLeon.xlsx"`, replique la gráfica de lineas mostrada de los cambios de preferencia. Recuerde incluir a la encuesta del Diario "El Norte" como la fuente de los datos. 
+
+```{r echo = FALSE}
+b2 = readxl::read_xlsx("Datos_Examen/ejercicio_02/preferenciasElectoralesNuevoLeon.xlsx")
+
+b2 %>% 
+  ggplot(aes(x = Mes, y = Porcentaje, color = Partidos)) + 
+  geom_point() + 
+  geom_line() + 
+  scale_color_manual(values = c("black", 
+                                "orange", 
+                                "brown", 
+                                "purple", 
+                                "blue", 
+                                "red")) + 
+  labs(title = "Cambio en las preferencias electorales de Marzo a Abril del 2020") + 
+  scale_x_continuous(breaks = c(3,4), 
+                     labels = c("Marzo", "Abril"))
+
+```
+### Ejercicio 03. 
+
+**Incendios forestales 2020**
+
+A partir de los datos que se encuentran en el archivo `"Datos_Examen/ejercicio_03/sup_afectada_incendios.xlsx"` provenientes de [CONAFOR](https://www.gob.mx/cms/uploads/attachment/file/604834/Cierre_de_la_Temporada_2020.PDF), realice lo siguiente: 
+
+a) Haga una gráfica de barras (ordenadas por tamaño) en la cual se compare la superficie afectada por incendios de cada una de las entidades federativas. _Las barras más chicas deberán ir arriba, y las más grandes abajo._ 
+
+```{r echo = FALSE}
+b3 = readxl::read_xlsx("Datos_Examen/ejercicio_03/sup_afectada_incendios.xlsx")
+
+plt = b3 %>% 
+  ggplot(aes(x = reorder(ENTIDAD, -SUP_AFECTADA), y = SUP_AFECTADA)) + 
+  geom_col(fill = "red") + 
+  coord_flip() + 
+  labs(title = "Incendios por entidad federativa, 2020", 
+       caption = "Fuente: CONAFOR, 2020. 
+       https://www.gob.mx/cms/uploads/attachment/file/604834/Cierre_de_la_Temporada_2020.PDF")
+
+plt
+
+```
+b) Realice la versión interactiva utilizando `plotly::ggplotly()`. **Opcional: ** mejore los `tooltips` dándole al texto de las ventanas un formato más cómodo de leer. 
+
+```{r echo = FALSE}
+plt %>% 
+  ggplotly()
+```
+
+c) Responda: ¿Cuáles es la entidad más y cual es la entidad menos afectada por incendios, en términos de superficie total?
+
+<!-- **R: ** BCS, con 30 has, es la menos afectada, mientras que BC es la más afectada, con 79,299 has.  -->
+
+### Ejercicio 04.
+
+**Partido con más votos, 2018**. 
+
+En la carpeta `"Datos_Examen/ejercicio_04/"` se encuentran dos archivos. El archivo `"Datos_Examen/ejercicio_04/partido_mas_votado.xlsx"` contiene el dato del partido individualmente más votado durante las elecciones del 2018 para todos los 300 distritos de elección federal, mientras que el archivo `"Datos_Examen/ejercicio_04/poligonos_dttos.shp"`contiene las geometrías de dichos distritos. 
+
+A partir de esta información, genere un mapa interactivo con la librería `{leaflet}` que muestre cual fue el partido más votado para los 300 Distritos Electorales Federales del país, siguiendo los siguientes pasos: 
+
+1. Lea los datos de los dos archivos previamente mencionados. 
+
+```{r echo = FALSE}
+attr = readxl::read_xlsx("Datos_Examen/ejercicio_04/partido_mas_votado.xlsx")
+geom = st_read("Datos_Examen/ejercicio_04/poligonos_dttos.geojson", quiet = T)
+```
+
+
+2. Junte ambos archivos, identificando la o las variables llave y utilizando la función `merge` o `left_join`. 
+
+```{r echo = FALSE}
+bd = left_join(geom, attr)
+```
+
+3. Genere la paleta de colores. 
+
+```{r echo = FALSE}
+
+colores_partido <- tribble(
+  ~Partido, ~Color,
+  "PAN", "#0049d1",
+  "PRI", "#de0f00",
+  "PRD", "#ded300",
+  "MC", "#de8d00",
+  "PVEM", "#00de55",
+  "MORENA", "#a30000",
+  "NA", "#02ada2",
+  "INDEPENDIENTE", "#b3009b",
+  "PT", "#b33c00",
+  "PES", "#2f0485",
+  "SP", "black")
+
+pal = colorFactor(domain = bd$value, 
+                  palette = c("#de8d00", 
+                              "#a30000", 
+                              "#0049d1",
+                              "#ded300",
+                              "#de0f00",
+                              "#00de55"))
+```
+
+4. Genere el `popup`
+
+```{r echo = FALSE}
+popup = str_c("<b>Entidad: </b> ", bd$ENTIDAD, "<br>",
+              "<b>Distrito: </b> ", bd$ID_DISTRITO, "<br>",
+              "<b>Cabecera Distrital: </b> ", bd$cabecera_distrital, "<br>",
+              "<b>Partido con más votos: </b> ", bd$value)
+```
+
+5. Genere el mapa, tomando en consideración la paleta de colores y el popup. 
+
+```{r echo = FALSE}
+leaflet(bd) %>% 
+  addProviderTiles("CartoDB.Positron") %>% 
+  addPolygons(fillColor = pal(bd$value), 
+              popup = popup, 
+              color = "white", 
+              fillOpacity = 1, 
+              opacity = 1, 
+              weight = 1) %>% 
+  addLegend(title = "Partido con más votos por Distrito Electoral", 
+            pal = pal, 
+            values = bd$value)
+```
