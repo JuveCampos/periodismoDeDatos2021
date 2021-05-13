@@ -34,3 +34,9 @@ En esta sesión repasamos la descarga de APIs a través del ejemplo de uso de 4 
 
 En esta sesión se introdujo el concepto de Web Scraping, las consideraciones legales y éticas y también se practicó con 3 ejemplos los fundamentos del proceso.  
 
+## Sesión 11 - COntinuación con el Web Scraping. 
+
+Continuamos con ejemplos de Web Scraping. 
+
+
+
